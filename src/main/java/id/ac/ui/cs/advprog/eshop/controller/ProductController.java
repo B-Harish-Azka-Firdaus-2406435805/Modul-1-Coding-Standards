@@ -13,6 +13,11 @@ import java.util.List;
 @RequestMapping("/product")
 public class ProductController {
 
+    @GetMapping("/")
+    public String home() {
+        return "redirect:/product/list";
+    }
+
     @Autowired
     private ProductService service;
 
