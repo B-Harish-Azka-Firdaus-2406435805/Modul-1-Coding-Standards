@@ -20,5 +20,9 @@ jobs:
           java-version: '21'
           cache: gradle
 
+      #fix for exit coe 126
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+
       - name: Run unit tests
         run: ./gradlew test
