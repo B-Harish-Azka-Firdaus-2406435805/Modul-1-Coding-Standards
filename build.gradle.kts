@@ -73,10 +73,10 @@ tasks.jacocoTestReport {
     dependsOn(tasks.test)
 }
 
-sonarqube {
+sonar {
     properties {
-        property("sonar.projectKey", "YOUR_PROJECT_KEY")
-        property("sonar.organization", "YOUR_ORG_NAME")
+        property("sonar.projectKey", "B-Harish-Azka-Firdaus-2406435805_Modul-1-Coding-Standards")
+        property("sonar.organization", "b-harish-azka-firdaus-2406435805")
         property("sonar.host.url", "https://sonarcloud.io")
     }
 }
