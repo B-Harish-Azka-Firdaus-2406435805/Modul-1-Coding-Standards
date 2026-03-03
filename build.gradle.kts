@@ -71,3 +71,7 @@ tasks.test {
 tasks.jacocoTestReport {
     dependsOn(tasks.test)
 }
+
+tasks.register("stage") {
+    dependsOn("build")
+}
