@@ -95,5 +95,27 @@ Without SOLID:
 - Leads to messy / spaghetti architecture
 
 **Example:**  
-If `CarService` depends directly on `CarRepository` (concrete class),  
+If `CarService` depends directly on `CarRepository` (concrete class),
 any change in repository implementation will affect the service layer.
+
+---
+
+## Reflection Module 4
+
+### 1. TDD Flow Reflection (based on Percival 2017)
+
+Following the Red-Green-Refactor TDD cycle in this exercise was genuinely useful. Writing tests first forced me to think about the expected behavior before writing any implementation, which helped clarify requirements (e.g., what constitutes a valid voucher code, when a status change should be rejected). The failing tests acted as a clear specification. When all tests passed after implementing the logic, I had concrete evidence that the code behaved correctly.
+
+However, I noticed that the TDD flow is most valuable when requirements are well-defined upfront. For the Payment service, I had to revisit some tests after realizing edge cases I missed initially (e.g., null vs empty string for Cash on Delivery fields). This aligns with Percival's point that TDD works best when paired with careful requirement analysis — the tests should cover both happy and unhappy paths thoroughly before implementation begins. Next time, I should spend more time identifying all edge cases during the RED phase before writing implementation.
+
+### 2. F.I.R.S.T. Principle Reflection
+
+Reviewing the unit tests created in this tutorial against the F.I.R.S.T. principle:
+
+- **Fast**: The tests run quickly since they use in-memory data structures and Mockito mocks — no actual database or network calls. ✅
+- **Independent**: Each test uses `@BeforeEach` to reset state, ensuring tests don't depend on each other's outcomes. ✅
+- **Repeatable**: Tests produce the same result regardless of environment or execution order since no external dependencies exist. ✅
+- **Self-Validating**: All tests use JUnit assertions (`assertEquals`, `assertThrows`, `assertNull`, etc.) that clearly pass or fail. ✅
+- **Timely**: Tests were written before implementation code as part of the TDD cycle, not after the fact. ✅
+
+Overall, the tests follow F.I.R.S.T. well. One area for improvement is that some test method names could be more descriptive about the exact scenario being tested, making test failure messages easier to diagnose at a glance.
