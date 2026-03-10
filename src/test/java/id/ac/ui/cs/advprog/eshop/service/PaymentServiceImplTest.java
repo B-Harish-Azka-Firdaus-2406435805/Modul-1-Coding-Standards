@@ -150,4 +150,15 @@ class PaymentServiceImplTest {
         List<Payment> results = paymentService.getAllPayments();
         assertEquals(2, results.size());
     }
+
+    @Test
+    void testSetStatusToWaitingPayment() {
+        Payment payment = payments.get(0);
+        doReturn(payment).when(paymentRepository).save(payment);
+
+        Payment result = paymentService.setStatus(payment, "WAITING_PAYMENT");
+        assertEquals("WAITING_PAYMENT", result.getStatus());
+        assertEquals("WAITING_PAYMENT", order.getStatus());
+        verify(paymentRepository, times(1)).save(payment);
+    }
 }

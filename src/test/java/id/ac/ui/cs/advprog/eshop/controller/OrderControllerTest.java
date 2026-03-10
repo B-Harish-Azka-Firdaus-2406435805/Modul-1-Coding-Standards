@@ -137,4 +137,21 @@ class OrderControllerTest {
 
         verify(paymentService, times(1)).addPayment(eq(order), eq("CASH_ON_DELIVERY"), anyMap());
     }
+
+    @Test
+    void testPayOrderPostUnknownMethod() throws Exception {
+        Map<String, String> emptyData = new HashMap<>();
+        Payment payment = new Payment("pay-3", "UNKNOWN", emptyData, order);
+
+        when(orderService.findById(order.getId())).thenReturn(order);
+        when(paymentService.addPayment(eq(order), eq("UNKNOWN"), anyMap())).thenReturn(payment);
+
+        mockMvc.perform(post("/order/pay/" + order.getId())
+                        .param("method", "UNKNOWN"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("Order/paymentSuccess"))
+                .andExpect(model().attributeExists("payment"));
+
+        verify(paymentService, times(1)).addPayment(eq(order), eq("UNKNOWN"), anyMap());
+    }
 }
