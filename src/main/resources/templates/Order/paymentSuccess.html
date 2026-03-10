@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Submitted</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4">
+    <h3>Payment Submitted</h3>
+    <div class="alert alert-info">
+        <p>Your payment has been submitted successfully.</p>
+        <p>Payment ID: <strong th:text="${payment.id}"></strong></p>
+        <p>Method: <strong th:text="${payment.method}"></strong></p>
+        <p>Status: <strong th:text="${payment.status}"></strong></p>
+    </div>
+    <a href="/order/history" class="btn btn-primary">View Order History</a>
+    <a href="/payment/detail" class="btn btn-secondary">Check Payment Status</a>
+</div>
+</body>
+</html>
