@@ -11,7 +11,6 @@
     <h3>Edit Product</h3>
 
     <form th:action="@{/product/edit}" th:object="${product}" method="post">
-        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
         <input type="hidden" th:field="*{productId}" />
         <div class="form-group">
             <label for="nameInput">Name</label>

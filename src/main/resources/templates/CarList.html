@@ -29,7 +29,6 @@
             </td>
             <td>
                 <form th:action="@{/car/deleteCar}" method="post" >
-                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                     <input type="hidden" th:name="carId" th:value="${car.carId}" />
                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                 </form>
