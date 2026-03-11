@@ -13,6 +13,7 @@
     <p>Status: <strong th:text="${order.status}"></strong></p>
 
     <form th:action="@{/order/pay/{id}(id=${order.id})}" method="post">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
         <div class="form-group">
             <label>Payment Method</label>
             <div>
